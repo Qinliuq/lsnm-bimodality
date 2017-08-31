@@ -1,9 +1,9 @@
-* Simulation Start Time: Tue Aug 29 14:49:40 2017
-* Simulation End Time: Tue Aug 29 17:03:06 2017
-* Simulation duration (timesteps): 42000
+* Simulation Start Time: Thu Aug 31 11:52:46 2017
+* Simulation End Time: Thu Aug 31 11:59:14 2017
+* Simulation duration (timesteps): 3000
 * Model description used: /Users/qinliu/lsnm-bimodality/model_sp_2.txt
-* Weights list used: /Users/qinliu/lsnm-bimodality/weightslist_saliency.txt
+* Weights list used: /Users/qinliu/lsnm-bimodality/weightlists/weightslist_saliency.txt
 * Neural net used: 
-* Simulation script used: /Users/qinliu/lsnm-bimodality/script_vDMS.py
+* Simulation script used: /Users/qinliu/lsnm-bimodality/scripts/script_w:endo_attn.py
 * Were weights changed to generate a new subject? NO
 * Was TVB Connectome used in the simulation? NO
