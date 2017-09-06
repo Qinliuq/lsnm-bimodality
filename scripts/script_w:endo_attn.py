@@ -23,7 +23,7 @@
 #
 # Total number of timesteps is 5400. (200 time steps = 1 second)
 #
-LSNM_simulation_time = 3000
+LSNM_simulation_time = 4500
 
 # Define list of parameters the script is going to need to modify the LSNM neural network
 # They are organized in the following order:

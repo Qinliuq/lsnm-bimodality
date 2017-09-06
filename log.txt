@@ -1,6 +1,6 @@
-* Simulation Start Time: Thu Aug 31 11:52:46 2017
-* Simulation End Time: Thu Aug 31 11:59:14 2017
-* Simulation duration (timesteps): 3000
+* Simulation Start Time: Tue Sep  5 22:49:10 2017
+* Simulation End Time: Tue Sep  5 23:00:56 2017
+* Simulation duration (timesteps): 4500
 * Model description used: /Users/qinliu/lsnm-bimodality/model_sp_2.txt
 * Weights list used: /Users/qinliu/lsnm-bimodality/weightlists/weightslist_saliency.txt
 * Neural net used: 
