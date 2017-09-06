@@ -638,7 +638,7 @@ def s4_up_01(modules, script_params):
         
         """
     modules['attna_c'][8][0][0][0] = script_params[0]
-    modules['attna_a'][8][0][0][0] = script_params[0]
+    modules['attna_re'][8][0][0][0] = script_params[0]
     modules['attna_b'][8][0][0][0] = script_params[0]
     modules['attna_s'][8][0][0][0] = script_params[1]
     
@@ -799,7 +799,7 @@ def s3_up_01(modules, script_params):
         """
     
     modules['attna_c'][8][0][0][0] = script_params[1]
-    modules['attna_a'][8][0][0][0] = script_params[0]
+    modules['attna_re'][8][0][0][0] = script_params[0]
     modules['attna_b'][8][0][0][0] = script_params[0]
     modules['attna_s'][8][0][0][0] = script_params[0]
     
