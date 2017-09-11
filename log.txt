@@ -1,5 +1,5 @@
-* Simulation Start Time: Sun Sep 10 22:41:34 2017
-* Simulation End Time: Sun Sep 10 23:06:12 2017
+* Simulation Start Time: Mon Sep 11 10:54:49 2017
+* Simulation End Time: Mon Sep 11 11:14:37 2017
 * Simulation duration (timesteps): 7500
 * Model description used: /Users/qinliu/lsnm-bimodality/model_sp_2.txt
 * Weights list used: /Users/qinliu/lsnm-bimodality/weightlists/weightslist_saliency.txt
