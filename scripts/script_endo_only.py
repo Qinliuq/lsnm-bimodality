@@ -182,7 +182,7 @@ def firstStimulusUshape(modules, script_params):
         
         """
     modules['attnv_re'][8][0][0][0] = script_params[0]
-    modules['attnv_a'][8][0][0][0] = script_params[1]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
     # insert the inputs stimulus into LGN and see what happens
@@ -214,7 +214,7 @@ def secondStimulusUshape(modules, script_params):
     modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
-    modules['attnv_s'][8][0][0][0] = script_params[1]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
     
     # insert the inputs stimulus into LGN and see what happens
     # the following is a 'U' shape
