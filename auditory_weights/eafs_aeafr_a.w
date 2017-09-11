@@ -6,7 +6,7 @@
 % Fanout spacing: (1, 1)
 % Specified fanout weights
 
-Connect(eafs, eafr)  {
+Connect(eafs_a, eafr_a)  {
   From:  (1, 1)  {
     ([ 1, 1]  0.050000) 
   }
