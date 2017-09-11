@@ -491,11 +491,11 @@ def s1_up_01(modules, script_params):
     
     modules['attna_c'][8][0][0][0] = script_params[0]
     modules['attna_re'][8][0][0][0] = script_params[0]
-    modules['attna_b'][8][0][0][0] = script_params[3]
+    modules['attna_b'][8][0][0][0] = script_params[4]
     modules['attna_s'][8][0][0][0] = script_params[0]
     
-    modules['mgns'][8][0][41][0] = script_params[4]
-    modules['mgns'][8][0][42][0] = script_params[4]
+    modules['mgns'][8][0][41][0] = script_params[5]
+    modules['mgns'][8][0][42][0] = script_params[5]
 
 def s1_up_02(modules, script_params):
     
@@ -503,8 +503,8 @@ def s1_up_02(modules, script_params):
     modules['mgns'][8][0][41][0] = 0.
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][42][0] = script_params[4]
-    modules['mgns'][8][0][43][0] = script_params[4]
+    modules['mgns'][8][0][42][0] = script_params[5]
+    modules['mgns'][8][0][43][0] = script_params[5]
 
 def s1_up_03(modules, script_params):
     
@@ -518,8 +518,8 @@ def s1_up_03(modules, script_params):
     
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][43][0] = script_params[4]
-    modules['mgns'][8][0][44][0] = script_params[4]
+    modules['mgns'][8][0][43][0] = script_params[5]
+    modules['mgns'][8][0][44][0] = script_params[5]
 
 def s1_up_04(modules, script_params):
     
@@ -533,8 +533,8 @@ def s1_up_04(modules, script_params):
     
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][44][0] = script_params[4]
-    modules['mgns'][8][0][45][0] = script_params[4]
+    modules['mgns'][8][0][44][0] = script_params[5]
+    modules['mgns'][8][0][45][0] = script_params[5]
 
 def s1_up_05(modules, script_params):
     
@@ -548,8 +548,8 @@ def s1_up_05(modules, script_params):
     
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][45][0] = script_params[4]
-    modules['mgns'][8][0][46][0] = script_params[4]
+    modules['mgns'][8][0][45][0] = script_params[5]
+    modules['mgns'][8][0][46][0] = script_params[5]
 
 def s1_up_06(modules, script_params):
     
@@ -561,8 +561,8 @@ def s1_up_06(modules, script_params):
     modules['mgns'][8][0][45][0] = 0.
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][46][0] = script_params[4]
-    modules['mgns'][8][0][47][0] = script_params[4]
+    modules['mgns'][8][0][46][0] = script_params[5]
+    modules['mgns'][8][0][47][0] = script_params[5]
 
 def s1_down_01(modules, script_params):
     
@@ -575,8 +575,8 @@ def s1_down_01(modules, script_params):
     modules['mgns'][8][0][46][0] = 0.
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][47][0] = script_params[4]
-    modules['mgns'][8][0][46][0] = script_params[4]
+    modules['mgns'][8][0][47][0] = script_params[5]
+    modules['mgns'][8][0][46][0] = script_params[5]
 
 def s1_down_02(modules, script_params):
     
@@ -590,8 +590,8 @@ def s1_down_02(modules, script_params):
     
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][46][0] = script_params[4]
-    modules['mgns'][8][0][45][0] = script_params[4]
+    modules['mgns'][8][0][46][0] = script_params[5]
+    modules['mgns'][8][0][45][0] = script_params[5]
 
 def s1_down_03(modules, script_params):
     
@@ -605,8 +605,8 @@ def s1_down_03(modules, script_params):
     
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][45][0] = script_params[4]
-    modules['mgns'][8][0][44][0] = script_params[4]
+    modules['mgns'][8][0][45][0] = script_params[5]
+    modules['mgns'][8][0][44][0] = script_params[5]
 
 def s1_down_04(modules, script_params):
     
@@ -620,8 +620,8 @@ def s1_down_04(modules, script_params):
     
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][44][0] = script_params[4]
-    modules['mgns'][8][0][43][0] = script_params[4]
+    modules['mgns'][8][0][44][0] = script_params[5]
+    modules['mgns'][8][0][43][0] = script_params[5]
 
 def s1_down_05(modules, script_params):
     
@@ -633,8 +633,8 @@ def s1_down_05(modules, script_params):
     modules['mgns'][8][0][44][0] = 0.
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][43][0] = script_params[4]
-    modules['mgns'][8][0][42][0] = script_params[4]
+    modules['mgns'][8][0][43][0] = script_params[5]
+    modules['mgns'][8][0][42][0] = script_params[5]
 
 def s1_down_06(modules, script_params):
     
@@ -646,8 +646,8 @@ def s1_down_06(modules, script_params):
     modules['mgns'][8][0][43][0] = 0.
     # insert the inputs stimulus into MGN and see what happens
     # the following stimulus is an up sweep
-    modules['mgns'][8][0][42][0] = script_params[4]
-    modules['mgns'][8][0][41][0] = script_params[4]
+    modules['mgns'][8][0][42][0] = script_params[5]
+    modules['mgns'][8][0][41][0] = script_params[5]
 ##
 
 def s2_up_01(modules, script_params):
