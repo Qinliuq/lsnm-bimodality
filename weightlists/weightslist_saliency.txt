@@ -194,6 +194,7 @@
 ./visual_weights/evfr_sevfr_s.w
 ./visual_weights/evfr_sivfr_s.w
 ./visual_weights/ivfr_sevfr_s.w
+./visual_weights/evfs_bevfr_b.w
 ./visual_weights/ev4vattnv.w
 ./visual_weights/ev4hattnv.w
 ./visual_weights/ev4cattnv.w
@@ -398,6 +399,7 @@
 ./auditory_weights/ead1_aeafr_b.w
 ./auditory_weights/ead1_aeafr.w
 ./auditory_weights/ead1_aeafr_s.w
+./auditory_weights/eafs_aeafr_a.w
 ./auditory_weights/attna_aiv4c.w
 ./auditory_weights/attna_aiv4h.w
 ./auditory_weights/attna_aiv4v.w
