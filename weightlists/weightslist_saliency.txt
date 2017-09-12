@@ -196,8 +196,7 @@
 ./visual_weights/ivfr_sevfr_s.w
 ./visual_weights/evfs_bevfr_b.w
 ./visual_weights/evfs_aevfr_a.w
-./visual_weights/evfs_sevfr_s.w
-./visual_weights/evfsevfr.s
+./visual_weights/evfsevfr.w
 ./visual_weights/ev4vattnv.w
 ./visual_weights/ev4hattnv.w
 ./visual_weights/ev4cattnv.w
