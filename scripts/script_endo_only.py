@@ -2,9 +2,9 @@
 #
 # The following script implements visual-auditory bimodal DMS trials with both endogenours and exogenous attention.
 #
-# There are 6 trials in each modality running simutaneously: 3 DMS trials and 3 control trials.
+# There are 5 trials in each modality running simutaneously: 5 visual DMS trials and 5 auditory DMS trials.
 #
-# The endogenous attention is set to attend visual stimuli, the exogenous attention is coupled with the saliency of inputs.
+# The endogenous attention is set to attend auditory stimuli, the exogenous attention is coupled with the saliency of inputs.
 #
 # The DMS trials are MATCH, MATCH, MATCH. The attention parameter in DMS trials is 0.3
 # The control trials are 'passive viewing': random shapes are presented and low attention (0.05)
@@ -23,13 +23,13 @@
 #
 # Total number of timesteps is 5400. (200 time steps = 1 second)
 #
-LSNM_simulation_time = 4500
+LSNM_simulation_time = 7200
 
 # Define list of parameters the script is going to need to modify the LSNM neural network
 # They are organized in the following order:
 # [lo_att_level, hi_att_level, lo_inp_level, hi_inp_level, att_step, ri1, ri2]
 
-script_params = [0.0, 0.3, 0.05, 0.5, 0.7, 0.9, 0.1]
+script_params = [0.0, 0.05, 0.1, 0.3, 0.5, 0.7, 0.9]
 
 def delay_period(modules, script_params):
     
@@ -41,21 +41,22 @@ def delay_period(modules, script_params):
     # turn off input stimulus but leave small level of activity there
     for x in range(modules['lgns'][0]):
         for y in range(modules['lgns'][1]):
-            modules['lgns'][8][x][y][0] = script_params[2]
-#modules['attnv'][8][0][0][0] = script_params[6]
-    modules['attnv_re'][8][0][0][0] = script_params[2]
-    modules['attnv_a'][8][0][0][0] = script_params[2]
-    modules['attnv_b'][8][0][0][0] = script_params[2]
-    modules['attnv_s'][8][0][0][0] = script_params[2]
+            modules['lgns'][8][x][y][0] = script_params[1]
+    #modules['attnv'][8][0][0][0] = script_params[1]
+    #change the endogenous attention to low, leave the exo attention as it is.
+    modules['attnv_re'][8][0][0][0] = script_params[1]
+    modules['attnv_a'][8][0][0][0] = script_params[1]
+    modules['attnv_b'][8][0][0][0] = script_params[1]
+    modules['attnv_s'][8][0][0][0] = script_params[1]
     # turn off input stimulus but leave small level of activity there
     for x in range(modules['mgns'][0]):
         for y in range(modules['mgns'][1]):
-            modules['mgns'][8][x][y][0] = script_params[2]
-    modules['attna_re'][8][0][0][0] = script_params[2]
-    modules['attna_c'][8][0][0][0] = script_params[2]
-#modules['attna_a'][8][0][0][0] = script_params[6]
-    modules['attna_b'][8][0][0][0] = script_params[2]
-    modules['attna_s'][8][0][0][0] = script_params[2]
+            modules['mgns'][8][x][y][0] = script_params[1]
+    #modules['attna_a'][8][0][0][0] = script_params[6]
+    modules['attna_re'][8][0][0][0] = script_params[1]
+    modules['attna_c'][8][0][0][0] = script_params[1]
+    modules['attna_b'][8][0][0][0] = script_params[1]
+    modules['attna_s'][8][0][0][0] = script_params[1]
 
 def intertrial_interval(modules, script_params):
     """
@@ -167,10 +168,10 @@ for x in range(modules['ea2c'][0]):
     modules['attnv_a'][8][0][0][0] = script_params[0]
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
-#modules['attnv'][8][0][0][0] = script_params[0]
+    #modules['attnv'][8][0][0][0] = script_params[0]
     modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attna_re'][8][0][0][0] = script_params[0]
-#modules['attna_a'][8][0][0][0] = script_params[0]
+    #modules['attna_a'][8][0][0][0] = script_params[0]
     modules['attna_b'][8][0][0][0] = script_params[0]
     modules['attna_s'][8][0][0][0] = script_params[0]
     modules['attna_c'][8][0][0][0] = script_params[0]
@@ -187,23 +188,23 @@ def firstStimulusUshape(modules, script_params):
     modules['attnv_s'][8][0][0][0] = script_params[0]
     # insert the inputs stimulus into LGN and see what happens
     # the following is a 'U' shape
-    modules['lgns'][8][2][1][0] = script_params[3]
-    modules['lgns'][8][3][1][0] = script_params[3]
-    modules['lgns'][8][4][1][0] = script_params[3]
-    modules['lgns'][8][5][1][0] = script_params[3]
-    modules['lgns'][8][6][1][0] = script_params[3]
-    modules['lgns'][8][7][1][0] = script_params[3]
-    modules['lgns'][8][7][2][0] = script_params[3]
-    modules['lgns'][8][7][3][0] = script_params[3]
-    modules['lgns'][8][7][4][0] = script_params[3]
-    modules['lgns'][8][7][5][0] = script_params[3]
-    modules['lgns'][8][7][6][0] = script_params[3]
-    modules['lgns'][8][2][7][0] = script_params[3]
-    modules['lgns'][8][3][7][0] = script_params[3]
-    modules['lgns'][8][4][7][0] = script_params[3]
-    modules['lgns'][8][5][7][0] = script_params[3]
-    modules['lgns'][8][6][7][0] = script_params[3]
-    modules['lgns'][8][7][7][0] = script_params[3]
+    modules['lgns'][8][2][1][0] = script_params[2]
+    modules['lgns'][8][3][1][0] = script_params[2]
+    modules['lgns'][8][4][1][0] = script_params[2]
+    modules['lgns'][8][5][1][0] = script_params[2]
+    modules['lgns'][8][6][1][0] = script_params[2]
+    modules['lgns'][8][7][1][0] = script_params[2]
+    modules['lgns'][8][7][2][0] = script_params[2]
+    modules['lgns'][8][7][3][0] = script_params[2]
+    modules['lgns'][8][7][4][0] = script_params[2]
+    modules['lgns'][8][7][5][0] = script_params[2]
+    modules['lgns'][8][7][6][0] = script_params[2]
+    modules['lgns'][8][2][7][0] = script_params[2]
+    modules['lgns'][8][3][7][0] = script_params[2]
+    modules['lgns'][8][4][7][0] = script_params[2]
+    modules['lgns'][8][5][7][0] = script_params[2]
+    modules['lgns'][8][6][7][0] = script_params[2]
+    modules['lgns'][8][7][7][0] = script_params[2]
 
 def secondStimulusUshape(modules, script_params):
     
@@ -216,6 +217,36 @@ def secondStimulusUshape(modules, script_params):
     modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
     
+    # insert the inputs stimulus into LGN and see what happens
+    # the following is a 'U' shape
+    modules['lgns'][8][2][1][0] = script_params[2]
+    modules['lgns'][8][3][1][0] = script_params[2]
+    modules['lgns'][8][4][1][0] = script_params[2]
+    modules['lgns'][8][5][1][0] = script_params[2]
+    modules['lgns'][8][6][1][0] = script_params[2]
+    modules['lgns'][8][7][1][0] = script_params[2]
+    modules['lgns'][8][7][2][0] = script_params[2]
+    modules['lgns'][8][7][3][0] = script_params[2]
+    modules['lgns'][8][7][4][0] = script_params[2]
+    modules['lgns'][8][7][5][0] = script_params[2]
+    modules['lgns'][8][7][6][0] = script_params[2]
+    modules['lgns'][8][2][7][0] = script_params[2]
+    modules['lgns'][8][3][7][0] = script_params[2]
+    modules['lgns'][8][4][7][0] = script_params[2]
+    modules['lgns'][8][5][7][0] = script_params[2]
+    modules['lgns'][8][6][7][0] = script_params[2]
+    modules['lgns'][8][7][7][0] = script_params[2]
+
+def thirdStimulusUshape(modules, script_params):
+    
+    """
+        generates a n-shaped visual input to neural network with parameters given"
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
     # insert the inputs stimulus into LGN and see what happens
     # the following is a 'U' shape
     modules['lgns'][8][2][1][0] = script_params[3]
@@ -236,38 +267,7 @@ def secondStimulusUshape(modules, script_params):
     modules['lgns'][8][6][7][0] = script_params[3]
     modules['lgns'][8][7][7][0] = script_params[3]
 
-def thirdStimulusNshape(modules, script_params):
-    
-    """
-        generates a n-shaped visual input to neural network with parameters given"
-        
-        """
-    modules['attnv_re'][8][0][0][0] = script_params[1]
-    modules['attnv_a'][8][0][0][0] = script_params[0]
-    modules['attnv_b'][8][0][0][0] = script_params[0]
-    modules['attnv_s'][8][0][0][0] = script_params[0]
-    
-    # insert the inputs stimulus into LGN and see what happens
-    # the following is a 'n' shape
-    modules['lgns'][8][2][1][0] = script_params[5]
-    modules['lgns'][8][3][1][0] = script_params[5]
-    modules['lgns'][8][4][1][0] = script_params[5]
-    modules['lgns'][8][5][1][0] = script_params[5]
-    modules['lgns'][8][6][1][0] = script_params[5]
-    modules['lgns'][8][7][1][0] = script_params[5]
-    modules['lgns'][8][2][2][0] = script_params[5]
-    modules['lgns'][8][2][3][0] = script_params[5]
-    modules['lgns'][8][2][4][0] = script_params[5]
-    modules['lgns'][8][2][5][0] = script_params[5]
-    modules['lgns'][8][2][6][0] = script_params[5]
-    modules['lgns'][8][2][7][0] = script_params[5]
-    modules['lgns'][8][3][7][0] = script_params[5]
-    modules['lgns'][8][4][7][0] = script_params[5]
-    modules['lgns'][8][5][7][0] = script_params[5]
-    modules['lgns'][8][6][7][0] = script_params[5]
-    modules['lgns'][8][7][7][0] = script_params[5]
-
-def forthStimulusNshape(modules, script_params):
+def forthStimulusUshape(modules, script_params):
     
     """
         generates a n-shaped visual input to neural network with parameters given"
@@ -275,28 +275,213 @@ def forthStimulusNshape(modules, script_params):
         """
     modules['attnv_re'][8][0][0][0] = script_params[0]
     modules['attnv_a'][8][0][0][0] = script_params[0]
-    modules['attnv_b'][8][0][0][0] = script_params[1]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
     modules['attnv_s'][8][0][0][0] = script_params[0]
-    
     # insert the inputs stimulus into LGN and see what happens
-    # the following is a 'n' shape
+    # the following is a 'U' shape
+    modules['lgns'][8][2][1][0] = script_params[3]
+    modules['lgns'][8][3][1][0] = script_params[3]
+    modules['lgns'][8][4][1][0] = script_params[3]
+    modules['lgns'][8][5][1][0] = script_params[3]
+    modules['lgns'][8][6][1][0] = script_params[3]
+    modules['lgns'][8][7][1][0] = script_params[3]
+    modules['lgns'][8][7][2][0] = script_params[3]
+    modules['lgns'][8][7][3][0] = script_params[3]
+    modules['lgns'][8][7][4][0] = script_params[3]
+    modules['lgns'][8][7][5][0] = script_params[3]
+    modules['lgns'][8][7][6][0] = script_params[3]
+    modules['lgns'][8][2][7][0] = script_params[3]
+    modules['lgns'][8][3][7][0] = script_params[3]
+    modules['lgns'][8][4][7][0] = script_params[3]
+    modules['lgns'][8][5][7][0] = script_params[3]
+    modules['lgns'][8][6][7][0] = script_params[3]
+    modules['lgns'][8][7][7][0] = script_params[3]
+
+def fifthStimulusUshape(modules, script_params):
+    
+    """
+        generates a n-shaped visual input to neural network with parameters given"
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
+    # insert the inputs stimulus into LGN and see what happens
+    # the following is a 'U' shape
+    modules['lgns'][8][2][1][0] = script_params[4]
+    modules['lgns'][8][3][1][0] = script_params[4]
+    modules['lgns'][8][4][1][0] = script_params[4]
+    modules['lgns'][8][5][1][0] = script_params[4]
+    modules['lgns'][8][6][1][0] = script_params[4]
+    modules['lgns'][8][7][1][0] = script_params[4]
+    modules['lgns'][8][7][2][0] = script_params[4]
+    modules['lgns'][8][7][3][0] = script_params[4]
+    modules['lgns'][8][7][4][0] = script_params[4]
+    modules['lgns'][8][7][5][0] = script_params[4]
+    modules['lgns'][8][7][6][0] = script_params[4]
+    modules['lgns'][8][2][7][0] = script_params[4]
+    modules['lgns'][8][3][7][0] = script_params[4]
+    modules['lgns'][8][4][7][0] = script_params[4]
+    modules['lgns'][8][5][7][0] = script_params[4]
+    modules['lgns'][8][6][7][0] = script_params[4]
+    modules['lgns'][8][7][7][0] = script_params[4]
+
+
+def sixthStimulusUshape(modules, script_params):
+    
+    """
+        generates a n-shaped visual input to neural network with parameters given"
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
+    # insert the inputs stimulus into LGN and see what happens
+    # the following is a 'U' shape
+    modules['lgns'][8][2][1][0] = script_params[4]
+    modules['lgns'][8][3][1][0] = script_params[4]
+    modules['lgns'][8][4][1][0] = script_params[4]
+    modules['lgns'][8][5][1][0] = script_params[4]
+    modules['lgns'][8][6][1][0] = script_params[4]
+    modules['lgns'][8][7][1][0] = script_params[4]
+    modules['lgns'][8][7][2][0] = script_params[4]
+    modules['lgns'][8][7][3][0] = script_params[4]
+    modules['lgns'][8][7][4][0] = script_params[4]
+    modules['lgns'][8][7][5][0] = script_params[4]
+    modules['lgns'][8][7][6][0] = script_params[4]
+    modules['lgns'][8][2][7][0] = script_params[4]
+    modules['lgns'][8][3][7][0] = script_params[4]
+    modules['lgns'][8][4][7][0] = script_params[4]
+    modules['lgns'][8][5][7][0] = script_params[4]
+    modules['lgns'][8][6][7][0] = script_params[4]
+    modules['lgns'][8][7][7][0] = script_params[4]
+
+
+def seventhStimulusUshape(modules, script_params):
+    
+    """
+        generates a n-shaped visual input to neural network with parameters given"
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
+    # insert the inputs stimulus into LGN and see what happens
+    # the following is a 'U' shape
     modules['lgns'][8][2][1][0] = script_params[5]
     modules['lgns'][8][3][1][0] = script_params[5]
     modules['lgns'][8][4][1][0] = script_params[5]
     modules['lgns'][8][5][1][0] = script_params[5]
     modules['lgns'][8][6][1][0] = script_params[5]
     modules['lgns'][8][7][1][0] = script_params[5]
-    modules['lgns'][8][2][2][0] = script_params[5]
-    modules['lgns'][8][2][3][0] = script_params[5]
-    modules['lgns'][8][2][4][0] = script_params[5]
-    modules['lgns'][8][2][5][0] = script_params[5]
-    modules['lgns'][8][2][6][0] = script_params[5]
+    modules['lgns'][8][7][2][0] = script_params[5]
+    modules['lgns'][8][7][3][0] = script_params[5]
+    modules['lgns'][8][7][4][0] = script_params[5]
+    modules['lgns'][8][7][5][0] = script_params[5]
+    modules['lgns'][8][7][6][0] = script_params[5]
     modules['lgns'][8][2][7][0] = script_params[5]
     modules['lgns'][8][3][7][0] = script_params[5]
     modules['lgns'][8][4][7][0] = script_params[5]
     modules['lgns'][8][5][7][0] = script_params[5]
     modules['lgns'][8][6][7][0] = script_params[5]
     modules['lgns'][8][7][7][0] = script_params[5]
+
+
+def eighthStimulusUshape(modules, script_params):
+    
+    """
+        generates a n-shaped visual input to neural network with parameters given"
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
+    # insert the inputs stimulus into LGN and see what happens
+    # the following is a 'U' shape
+    modules['lgns'][8][2][1][0] = script_params[5]
+    modules['lgns'][8][3][1][0] = script_params[5]
+    modules['lgns'][8][4][1][0] = script_params[5]
+    modules['lgns'][8][5][1][0] = script_params[5]
+    modules['lgns'][8][6][1][0] = script_params[5]
+    modules['lgns'][8][7][1][0] = script_params[5]
+    modules['lgns'][8][7][2][0] = script_params[5]
+    modules['lgns'][8][7][3][0] = script_params[5]
+    modules['lgns'][8][7][4][0] = script_params[5]
+    modules['lgns'][8][7][5][0] = script_params[5]
+    modules['lgns'][8][7][6][0] = script_params[5]
+    modules['lgns'][8][2][7][0] = script_params[5]
+    modules['lgns'][8][3][7][0] = script_params[5]
+    modules['lgns'][8][4][7][0] = script_params[5]
+    modules['lgns'][8][5][7][0] = script_params[5]
+    modules['lgns'][8][6][7][0] = script_params[5]
+    modules['lgns'][8][7][7][0] = script_params[5]
+
+
+def ninethStimulusUshape(modules, script_params):
+    
+    """
+        generates a n-shaped visual input to neural network with parameters given"
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
+    # insert the inputs stimulus into LGN and see what happens
+    # the following is a 'U' shape
+    modules['lgns'][8][2][1][0] = script_params[6]
+    modules['lgns'][8][3][1][0] = script_params[6]
+    modules['lgns'][8][4][1][0] = script_params[6]
+    modules['lgns'][8][5][1][0] = script_params[6]
+    modules['lgns'][8][6][1][0] = script_params[6]
+    modules['lgns'][8][7][1][0] = script_params[6]
+    modules['lgns'][8][7][2][0] = script_params[6]
+    modules['lgns'][8][7][3][0] = script_params[6]
+    modules['lgns'][8][7][4][0] = script_params[6]
+    modules['lgns'][8][7][5][0] = script_params[6]
+    modules['lgns'][8][7][6][0] = script_params[6]
+    modules['lgns'][8][2][7][0] = script_params[6]
+    modules['lgns'][8][3][7][0] = script_params[6]
+    modules['lgns'][8][4][7][0] = script_params[6]
+    modules['lgns'][8][5][7][0] = script_params[6]
+    modules['lgns'][8][6][7][0] = script_params[6]
+    modules['lgns'][8][7][7][0] = script_params[6]
+
+
+def tenthStimulusUshape(modules, script_params):
+    
+    """
+        generates a n-shaped visual input to neural network with parameters given"
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    modules['attnv_a'][8][0][0][0] = script_params[0]
+    modules['attnv_b'][8][0][0][0] = script_params[0]
+    modules['attnv_s'][8][0][0][0] = script_params[0]
+    # insert the inputs stimulus into LGN and see what happens
+    # the following is a 'U' shape
+    modules['lgns'][8][2][1][0] = script_params[6]
+    modules['lgns'][8][3][1][0] = script_params[6]
+    modules['lgns'][8][4][1][0] = script_params[6]
+    modules['lgns'][8][5][1][0] = script_params[6]
+    modules['lgns'][8][6][1][0] = script_params[6]
+    modules['lgns'][8][7][1][0] = script_params[6]
+    modules['lgns'][8][7][2][0] = script_params[6]
+    modules['lgns'][8][7][3][0] = script_params[6]
+    modules['lgns'][8][7][4][0] = script_params[6]
+    modules['lgns'][8][7][5][0] = script_params[6]
+    modules['lgns'][8][7][6][0] = script_params[6]
+    modules['lgns'][8][2][7][0] = script_params[6]
+    modules['lgns'][8][3][7][0] = script_params[6]
+    modules['lgns'][8][4][7][0] = script_params[6]
+    modules['lgns'][8][5][7][0] = script_params[6]
+    modules['lgns'][8][6][7][0] = script_params[6]
+    modules['lgns'][8][7][7][0] = script_params[6]
+
 
 def s1_up_01(modules, script_params):
     """
@@ -305,8 +490,8 @@ def s1_up_01(modules, script_params):
         """
     
     modules['attna_c'][8][0][0][0] = script_params[0]
-    modules['attna_re'][8][0][0][0] = script_params[0]
-    modules['attna_b'][8][0][0][0] = script_params[1]
+    modules['attna_re'][8][0][0][0] = script_params[4]
+    modules['attna_b'][8][0][0][0] = script_params[0]
     modules['attna_s'][8][0][0][0] = script_params[0]
     
     modules['mgns'][8][0][41][0] = script_params[5]
@@ -473,8 +658,8 @@ def s2_up_01(modules, script_params):
     
     modules['attna_c'][8][0][0][0] = script_params[0]
     modules['attna_re'][8][0][0][0] = script_params[0]
-    modules['attna_b'][8][0][0][0] = script_params[0]
-    modules['attna_s'][8][0][0][0] = script_params[1]
+    modules['attna_b'][8][0][0][0] = script_params[3]
+    modules['attna_s'][8][0][0][0] = script_params[0]
     
     modules['mgns'][8][0][41][0] = script_params[5]
     modules['mgns'][8][0][42][0] = script_params[5]
@@ -982,88 +1167,165 @@ simulation_events = {
     '300': s1_down_05,
     '320': s1_down_06,
         '340': delay_period,
+    
+    '819': secondStimulusUshape,
+    '820': s1_up_01,
+    '840': s1_up_02,
+    '860': s1_up_03,
+    '880': s1_up_04,
+    '900': s1_up_05,
+    '920': s1_up_06,
+    '940': s1_down_01,
+    '960': s1_down_02,
+    '980': s1_down_03,
+    '1000': s1_down_04,
+    '1020': s1_down_05,
+    '1040': s1_down_06,
+    '1060': delay_period,
 
-    '839': secondStimulusUshape,
-    '840': s2_up_01,
-    '860': s2_up_02,
-    '880': s2_up_03,
-    '900': s2_up_04,
-    '920': s2_up_05,
-    '940': s2_up_06,
-    '960': s2_down_01,
-    '980': s2_down_02,
-    '1000': s2_down_03,
-    '1020': s2_down_04,
-    '1040': s2_down_05,
-    '1060': s2_down_06,
-    '1080': delay_period,
+'1100': intertrial_interval,
+'1110': intertrial_interval,
+'1120': intertrial_interval,
+    
+    '1599': thirdStimulusUshape,
+    '1600': s1_up_01,
+    '1620': s1_up_02,
+    '1640': s1_up_03,
+    '1660': s1_up_04,
+    '1680': s1_up_05,
+    '1700': s1_up_06,
+    '1720': s1_down_01,
+    '1740': s1_down_02,
+    '1760': s1_down_03,
+    '1780': s1_down_04,
+    '1800': s1_down_05,
+    '1820': s1_down_06,
+        '1840': delay_period,
+    
+    '2319': forthStimulusUshape,
+    '2320': s1_up_01,
+    '2340': s1_up_02,
+    '2360': s1_up_03,
+    '2380': s1_up_04,
+    '2400': s1_up_05,
+    '2420': s1_up_06,
+    '2440': s1_down_01,
+    '2460': s1_down_02,
+    '2480': s1_down_03,
+    '2500': s1_down_04,
+    '2520': s1_down_05,
+    '2540': s1_down_06,
+    '2560': delay_period,
 
-'1180': intertrial_interval,
+'2600': intertrial_interval,
+'2610': intertrial_interval,
+'2620': intertrial_interval,
     
-    '1679': firstStimulusUshape,
-    '1680': s1_up_01,
-    '1700': s1_up_02,
-    '1720': s1_up_03,
-    '1740': s1_up_04,
-    '1760': s1_up_05,
-    '1780': s1_up_06,
-    '1800': s1_down_01,
-    '1820': s1_down_02,
-    '1840': s1_down_03,
-    '1860': s1_down_04,
-    '1880': s1_down_05,
-    '1900': s1_down_06,
-    '1920': delay_period,
+    '3099': fifthStimulusUshape,
+    '3100': s1_up_01,
+    '3120': s1_up_02,
+    '3140': s1_up_03,
+    '3160': s1_up_04,
+    '3180': s1_up_05,
+    '3200': s1_up_06,
+    '3220': s1_down_01,
+    '3240': s1_down_02,
+    '3260': s1_down_03,
+    '3280': s1_down_04,
+    '3300': s1_down_05,
+    '3320': s1_down_06,
+        '3340': delay_period,
     
-    '2419': secondStimulusUshape,
-    '2420': s2_up_01,
-    '2440': s2_up_02,
-    '2460': s2_up_03,
-    '2480': s2_up_04,
-    '2500': s2_up_05,
-    '2520': s2_up_06,
-    '2560': s2_down_01,
-    '2580': s2_down_02,
-    '2600': s2_down_03,
-    '2620': s2_down_04,
-    '2640': s2_down_05,
-    '2660': s2_down_06,
-    '2680': delay_period,
+    '3819': sixthStimulusUshape,
+    '3820': s1_up_01,
+    '3840': s1_up_02,
+    '3860': s1_up_03,
+    '3880': s1_up_04,
+    '3900': s1_up_05,
+    '3920': s1_up_06,
+    '3940': s1_down_01,
+    '3960': s1_down_02,
+    '3980': s1_down_03,
+    '4000': s1_down_04,
+    '4020': s1_down_05,
+    '4040': s1_down_06,
+    '4060': delay_period,
+
+'4100': intertrial_interval,
+'4110': intertrial_interval,
+'4120': intertrial_interval,
     
-    '2780': intertrial_interval,
     
-    '3279': thirdStimulusNshape,
-    '3280': s3_up_01,
-    '3300': s3_up_02,
-    '3320': s3_up_03,
-    '3340': s3_up_04,
-    '3360': s3_up_05,
-    '3380': s3_up_06,
-    '3400': s3_down_01,
-    '3420': s3_down_02,
-    '3440': s3_down_03,
-    '3460': s3_down_04,
-    '3480': s3_down_05,
-    '3500': s3_down_06,
-    '3520': delay_period,
+    '4599': seventhStimulusUshape,
     
-    '4019': forthStimulusNshape,
-    '4020': s4_up_01,
-    '4040': s4_up_02,
-    '4060': s4_up_03,
-    '4080': s4_up_04,
-    '4100': s4_up_05,
-    '4120': s4_up_06,
-    '4160': s4_down_01,
-    '4180': s4_down_02,
-    '4200': s4_down_03,
-    '4220': s4_down_04,
-    '4240': s4_down_05,
-    '4260': s4_down_06,
-    '4280': delay_period,
+    '4600': s1_up_01,
+    '4620': s1_up_02,
+    '4640': s1_up_03,
+    '4660': s1_up_04,
+    '4680': s1_up_05,
+    '4700': s1_up_06,
+    '4720': s1_down_01,
+    '4740': s2_down_02,
+    '4760': s2_down_03,
+    '4780': s2_down_04,
+    '4800': s2_down_05,
+    '4820': s2_down_06,
+    '4840': delay_period,
     
-    '4380': intertrial_interval,
-    '4390': intertrial_interval
+    '5319': eighthStimulusUshape,
+    '5320': s1_up_01,
+    '5340': s1_up_02,
+    '5360': s1_up_03,
+    '5380': s1_up_04,
+    '5400': s1_up_05,
+    '5420': s1_up_06,
+    '5440': s1_down_01,
+    '5460': s1_down_02,
+    '5480': s1_down_03,
+    '5400': s1_down_04,
+    '5520': s1_down_05,
+    '5540': s1_down_06,
+        '5560': delay_period,
+
+'5600': intertrial_interval,
+'5610': intertrial_interval,
+'5620': intertrial_interval,
+    
+    '6099': ninethStimulusUshape,
+    
+    '6100': s1_up_01,
+    '6120': s1_up_02,
+    '6140': s1_up_03,
+    '6160': s1_up_04,
+    '6180': s1_up_05,
+    '6200': s1_up_06,
+    '6220': s1_down_01,
+    '6240': s1_down_02,
+    '6260': s1_down_03,
+    '6280': s1_down_04,
+    '6300': s1_down_05,
+    '6320': s1_down_06,
+    '6340': delay_period,
+    
+    '6819': tenthStimulusUshape,
+    '6820': s1_up_01,
+    '6840': s1_up_02,
+    '6860': s1_up_03,
+    '6880': s1_up_04,
+    '6900': s1_up_05,
+    '6920': s1_up_06,
+    '6940': s1_down_01,
+    '6960': s1_down_02,
+    '6980': s1_down_03,
+    '7000': s1_down_04,
+    '7020': s1_down_05,
+    '7040': s1_down_06,
+    '7060': delay_period,
+
+'7100': intertrial_interval,
+'7105': intertrial_interval,
+'7110': intertrial_interval
+
 }
 
 
