@@ -1,8 +1,8 @@
-* Simulation Start Time: Wed Sep 13 15:43:19 2017
-* Simulation End Time: Wed Sep 13 16:01:11 2017
+* Simulation Start Time: Wed Sep 13 22:22:15 2017
+* Simulation End Time: Wed Sep 13 22:44:42 2017
 * Simulation duration (timesteps): 7200
 * Model description used: /Users/qinliu/lsnm-bimodality/model_sp_2.txt
-* Weights list used: /Users/qinliu/lsnm-bimodality/weightlists/weightslist_exo_only.txt
+* Weights list used: /Users/qinliu/lsnm-bimodality/weightlists/weightslist_saliency.txt
 * Neural net used: 
 * Simulation script used: /Users/qinliu/lsnm-bimodality/scripts/script_exo_only.py
 * Were weights changed to generate a new subject? NO

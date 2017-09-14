@@ -74,27 +74,27 @@ def intertrial_interval(modules, script_params):
             modules['evd2'][8][x][y][0] = script_params[0]
 
 # reset D1
-for x in range(modules['evd1_a'][0]):
-    for y in range(modules['evd1_a'][1]):
-        modules['evd1_a'][8][x][y][0] = script_params[0]
+    for x in range(modules['evd1_a'][0]):
+        for y in range(modules['evd1_a'][1]):
+            modules['evd1_a'][8][x][y][0] = script_params[0]
     # reset D2
     for x in range(modules['evd2_a'][0]):
         for y in range(modules['evd2_a'][1]):
             modules['evd2_a'][8][x][y][0] = script_params[0]
 
 # reset D1
-for x in range(modules['evd1_b'][0]):
-    for y in range(modules['evd1_b'][1]):
-        modules['evd1_b'][8][x][y][0] = script_params[0]
+    for x in range(modules['evd1_b'][0]):
+        for y in range(modules['evd1_b'][1]):
+            modules['evd1_b'][8][x][y][0] = script_params[0]
     # reset D2
     for x in range(modules['evd2_b'][0]):
         for y in range(modules['evd2_b'][1]):
             modules['evd2_b'][8][x][y][0] = script_params[0]
 
 # reset D1
-for x in range(modules['evd1_s'][0]):
-    for y in range(modules['evd1_s'][1]):
-        modules['evd1_s'][8][x][y][0] = script_params[0]
+    for x in range(modules['evd1_s'][0]):
+        for y in range(modules['evd1_s'][1]):
+            modules['evd1_s'][8][x][y][0] = script_params[0]
     # reset D2
     for x in range(modules['evd2_s'][0]):
         for y in range(modules['evd2_s'][1]):
@@ -105,60 +105,60 @@ for x in range(modules['evd1_s'][0]):
         for y in range(modules['lgns'][1]):
             modules['lgns'][8][x][y][0] = script_params[2]
 # reset D1
-for x in range(modules['ead1_c'][0]):
-    for y in range(modules['ead1_c'][1]):
-        modules['ead1_c'][8][x][y][0] = script_params[0]
+    for x in range(modules['ead1_c'][0]):
+        for y in range(modules['ead1_c'][1]):
+            modules['ead1_c'][8][x][y][0] = script_params[0]
     # reset D2
     for x in range(modules['ead2_c'][0]):
         for y in range(modules['ead2_c'][1]):
             modules['ead2_c'][8][x][y][0] = script_params[0]
 
 # reset D1
-for x in range(modules['ead1_a'][0]):
-    for y in range(modules['ead1_a'][1]):
-        modules['ead1_a'][8][x][y][0] = script_params[0]
+    for x in range(modules['ead1_a'][0]):
+        for y in range(modules['ead1_a'][1]):
+            modules['ead1_a'][8][x][y][0] = script_params[0]
     # reset D2
     for x in range(modules['ead2_a'][0]):
         for y in range(modules['ead2_a'][1]):
             modules['ead2_a'][8][x][y][0] = script_params[0]
 
 # reset D1
-for x in range(modules['ead1_b'][0]):
-    for y in range(modules['ead1_b'][1]):
-        modules['ead1_b'][8][x][y][0] = 0.
+    for x in range(modules['ead1_b'][0]):
+        for y in range(modules['ead1_b'][1]):
+            modules['ead1_b'][8][x][y][0] = 0.
     # reset D2
     for x in range(modules['ead2_b'][0]):
         for y in range(modules['ead2_b'][1]):
             modules['ead2_b'][8][x][y][0] = 0.
 
 # reset D1
-for x in range(modules['ead1_s'][0]):
-    for y in range(modules['ead1_s'][1]):
-        modules['ead1_s'][8][x][y][0] = 0.
+    for x in range(modules['ead1_s'][0]):
+        for y in range(modules['ead1_s'][1]):
+            modules['ead1_s'][8][x][y][0] = 0.
     # reset D2
     for x in range(modules['ead2_s'][0]):
         for y in range(modules['ead2_s'][1]):
             modules['ead2_s'][8][x][y][0] = 0.
 
-for x in range(modules['ea1d'][0]):
-    for y in range(modules['ea1d'][1]):
-        modules['ea1d'][8][x][y][0] = 0.
+    for x in range(modules['ea1d'][0]):
+        for y in range(modules['ea1d'][1]):
+            modules['ea1d'][8][x][y][0] = 0.
     
     for x in range(modules['ea1u'][0]):
         for y in range(modules['ea1u'][1]):
             modules['ea1u'][8][x][y][0] = 0.
 
-for x in range(modules['ea2u'][0]):
-    for y in range(modules['ea2u'][1]):
-        modules['ea2u'][8][x][y][0] = 0.
+    for x in range(modules['ea2u'][0]):
+        for y in range(modules['ea2u'][1]):
+            modules['ea2u'][8][x][y][0] = 0.
     
     for x in range(modules['ea2d'][0]):
         for y in range(modules['ea2d'][1]):
             modules['ea2d'][8][x][y][0] = 0.
 
-for x in range(modules['ea2c'][0]):
-    for y in range(modules['ea2c'][1]):
-        modules['ea2c'][8][x][y][0] = 0.
+    for x in range(modules['ea2c'][0]):
+        for y in range(modules['ea2c'][1]):
+            modules['ea2c'][8][x][y][0] = 0.
     
     # turn off input stimulus but leave small level of activity there
     for x in range(modules['mgns'][0]):
