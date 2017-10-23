@@ -95,6 +95,8 @@
 ./visual_weights/evfs_bivd1_b.w
 ./visual_weights/evd2exss.w
 ./visual_weights/evd2_aexss.w
+./visual_weights/evd2_bexss.w
+./visual_weights/evd2_sexss.w
 ./visual_weights/evd1inss.w
 ./visual_weights/evd1_ainss.w
 ./visual_weights/evd1_binss.w
