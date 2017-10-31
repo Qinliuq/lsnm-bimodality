@@ -1,6 +1,7 @@
 #!/usr/bin/python
 #
-# Script created on October 4 2017
+# Script created on October 4 2017, by Antonio Ulloa.
+# Modified on October 31 2017, by Qin Liu.
 #
 # Fixation script (AKA 'Resting State' in the neuroimaging literature)
 #
@@ -21,7 +22,7 @@ LSNM_simulation_time = 39600
 # Define list of parameters the script is going to need to modify the LSNM neural network
 # They are organized in the following order:
 # [lo_att_level, hi_att_level, lo_inp_level, hi_inp_level, att_step, ri1, ri2]
-script_params = [0.05, 0.3, 0.05, 0.2, 0.02, [], []]
+script_params = [0.0, 0.05, 0.1, 0.3, 0.5, 0.7, 0.9]
 
 def dot_shape(modules, script_params):
     
@@ -30,11 +31,11 @@ def dot_shape(modules, script_params):
     
     """
     
-    modules['atts'][8][0][0][0] = script_params[0]
+    modules['atts'][8][0][0][0] = script_params[1]
     
     # insert the inputs stimulus into LGN and see what happens
     # the following stimulus is an 'cross' shape
-    modules['lgns'][8][4][4][0] = script_params[3]
+    modules['lgns'][8][4][4][0] = script_params[5]
     
 def intertrial_interval(modules, script_params):
 
@@ -46,15 +47,15 @@ def intertrial_interval(modules, script_params):
     # reset D1
     for x in range(modules['efd1'][0]):
         for y in range(modules['efd1'][1]):
-            modules['efd1'][8][x][y][0] = script_params[2]
+            modules['efd1'][8][x][y][0] = script_params[1]
 	    
     # turn off input stimulus but leave small level of activity there
     for x in range(modules['lgns'][0]):
         for y in range(modules['lgns'][1]):
-            modules['lgns'][8][x][y][0] = script_params[2]
+            modules['lgns'][8][x][y][0] = script_params[1]
 
     # turn attention to 'LO', as the current trial has ended
-    modules['atts'][8][0][0][0] = script_params[0]
+    modules['atts'][8][0][0][0] = script_params[1]
     
 # define a dictionary of simulation events functions, each associated with
 # a specific simulation timestep
