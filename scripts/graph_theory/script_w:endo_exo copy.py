@@ -1,8 +1,7 @@
 #!/usr/bin/python
 #
-# The following script implements visual-auditory bimodal DMS trials with both endogenours and exogenous attention.
+# The following script implements 6 blocks of visual-auditory bimodal DMS trials with both endogenours and exogenous attention.
 #
-# There are 5 trials in each modality running simutaneously: 5 visual DMS trials and 5 auditory DMS trials.
 #
 # The endogenous attention is set to attend auditory stimuli, the exogenous attention is coupled with the saliency of inputs.
 #
@@ -29,7 +28,40 @@ LSNM_simulation_time = 39600
 # They are organized in the following order:
 # [lo_att_level, hi_att_level, lo_inp_level, hi_inp_level, att_step, ri1, ri2]
 
-script_params = [0.0, 0.05, 0.1, 0.3, 0.5, 0.7, 0.9]
+script_params = [0.0, 0.05, 0.1, 0.3, 0.5, 0.7, 0.9, [], []]
+
+rand_shape1 = rdm.sample(range(81),18)
+rand_indeces1 = np.unravel_index(rand_shape1,(9,9))
+script_params[7] = zip(*rand_indeces1)
+
+# A second random shape is inserted for a mismatch
+# Contributed by John Gilbert
+rand_shape2 = rdm.sample(range(81),18)
+rand_indeces2 = np.unravel_index(rand_shape2,(9,9))
+script_params[8] = zip(*rand_indeces2)
+
+def random_shape_1(modules, script_params):
+    """
+        generates a random visual input to neural network with parameters given
+        
+        """
+    modules['attnv_re'][8][0][0][0] = script_params[1]
+    
+    for k1 in range(len(script_params[7])):
+        modules['lgns'][8][script_params[7][k1][0]][script_params[7][k1][1]][0] = script_params[5]
+
+def random_shape_2(modules, script_params):
+    """
+        generates a random visual input to neural network with parameters given
+        
+        """
+    
+    modules['attnv_re'][8][0][0][0] = script_params[0]
+    
+    for k1 in range(len(script_params[8])):
+        modules['lgns'][8][script_params[8][k1][0]][script_params[8][k1][1]][0] = script_params[5]
+
+
 
 def delay_period(modules, script_params):
     
@@ -1149,6 +1181,8 @@ def s3_down_06(modules, script_params):
     modules['mgns'][8][0][41][0] = script_params[3]
 
 
+
+
 simulation_events = {
     '0': intertrial_interval,
     '20': intertrial_interval,
@@ -1196,16 +1230,16 @@ simulation_events = {
         '1500': delay_period,
     
     '1799': forthStimulusUshape,
-    '1800': s1_up_01,
-    '1820': s1_up_02,
-    '1840': s1_up_03,
-    '1860': s1_up_04,
-    '1880': s1_up_05,
-    '1900': s1_down_01,
-    '1920': s1_down_02,
-    '1940': s1_down_03,
-    '1960': s1_down_04,
-    '1980': s1_down_05,
+    '1800': s3_up_01,
+    '1820': s3_up_02,
+    '1840': s3_up_03,
+    '1860': s3_up_04,
+    '1880': s3_up_05,
+    '1900': s3_down_01,
+    '1920': s3_down_02,
+    '1940': s3_down_03,
+    '1960': s3_down_04,
+    '1980': s3_down_05,
 
 '2000': intertrial_interval,
 '2010': intertrial_interval,
@@ -1240,48 +1274,68 @@ simulation_events = {
 '3110': intertrial_interval,
 '3120': intertrial_interval,
     ############################# first block of 3 control trials
+    '3500': random_shape_1,
     
-    '4599': seventhStimulusUshape,
-
-    '4600': s1_up_01,
-    '4620': s1_up_02,
-    '4640': s1_up_03,
-    '4660': s1_up_04,
-    '4680': s1_up_05,
-    '4700': s1_up_06,
-    '4720': s1_down_01,
-    '4740': s2_down_02,
-    '4760': s2_down_03,
-    '4780': s2_down_04,
-    '4800': s2_down_05,
-    '4820': s2_down_06,
-    '4840': delay_period,
-
-    '5319': eighthStimulusUshape,
-    '5320': s1_up_01,
-    '5340': s1_up_02,
-    '5360': s1_up_03,
-    '5380': s1_up_04,
-    '5400': s1_up_05,
-    '5420': s1_up_06,
-    '5440': s1_down_01,
-    '5460': s1_down_02,
-    '5480': s1_down_03,
-    '5400': s1_down_04,
-    '5520': s1_down_05,
-    '5540': s1_down_06,
-        '5560': delay_period,
-
-'5600': intertrial_interval,
-'5610': intertrial_interval,
-'5620': intertrial_interval,
+    '3700': delay_period,
     
-    '6099': ninethStimulusUshape,
+    '4000': random_shape_1,
+    
+    '4200': intertrial_interval,
+    
+    '4600': random_shape_1,
+    
+    '4800': delay_period,
+    
+    '5100': random_shape_2,
+    
+    '5300': intertrial_interval,
+    
+    '5700': random_shape_2,
+    
+    '5900': delay_period,
+    
+    '6200': random_shape_2,
+    
+    '6400': intertrial_interval,
+    
+    ############################# second block of dms trials
+    
+    '6799': seventhStimulusUshape,
 
-    '6100': s1_up_01,
-    '6120': s1_up_02,
-    '6140': s1_up_03,
-    '6160': s1_up_04,
+    '6800': s1_up_01,
+    '6820': s1_up_02,
+    '6840': s1_up_03,
+    '6860': s1_up_04,
+    '6880': s1_up_05,
+    '6900': s1_down_01,
+    '6920': s1_down_02,
+    '6940': s1_down_03,
+    '6960': s1_down_04,
+    '6980': s1_down_05,
+    '7000': delay_period,
+
+    '7299': eighthStimulusUshape,
+    '7300': s1_up_01,
+    '7320': s1_up_02,
+    '7340': s1_up_03,
+    '7360': s1_up_04,
+    '7380': s1_up_05,
+    '7400': s1_down_01,
+    '7420': s1_down_02,
+    '7440': s1_down_03,
+    '7460': s1_down_04,
+    '7480': s1_down_05,
+
+'7500': intertrial_interval,
+'7510': intertrial_interval,
+'7520': intertrial_interval,
+    
+    '7899': ninethStimulusUshape,
+
+    '7900': s1_up_01,
+    '7920': s1_up_02,
+    '7940': s1_up_03,
+    '7960': s1_up_04,
     '6180': s1_up_05,
     '6200': s1_up_06,
     '6220': s1_down_01,
@@ -1310,6 +1364,7 @@ simulation_events = {
 '7100': intertrial_interval,
 '7105': intertrial_interval,
 '7110': intertrial_interval
+
 
 }
 

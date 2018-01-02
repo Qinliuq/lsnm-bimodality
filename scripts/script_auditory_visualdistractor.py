@@ -6,7 +6,7 @@
 #
 # Total number of timesteps is 5400. (200 time steps = 1 second)
 #
-LSNM_simulation_time = 3000
+LSNM_simulation_time = 1300
 
 # Define list of parameters the script is going to need to modify the LSNM neural network
 # They are organized in the following order:
@@ -962,42 +962,22 @@ simulation_events = {
     '320': s1_down_06,
        '340': delay_period,
 
-    '840': s2_up_01,
-    '860': s2_up_02,
-    '880': s2_up_03,
-    '900': s2_up_04,
-    '920': s2_up_05,
-    '940': s2_up_06,
-    '960': s2_down_01,
-    '980': s2_down_02,
-    '1000': s2_down_03,
-    '1020': s2_down_04,
-    '1040': s2_down_05,
-    '1060': s2_down_06,
+    '840': s1_up_01,
+    '860': s1_up_02,
+    '880': s1_up_03,
+    '900': s1_up_04,
+    '920': s1_up_05,
+    '940': s1_up_06,
+    '960': s1_down_01,
+    '980': s1_down_02,
+    '1000': s1_down_03,
+    '1020': s1_down_04,
+    '1040': s1_down_05,
+    '1060': s1_down_06,
 
 	'1080': delay_period,
- 
-    '1580': thirdStimulusNshape,
-
-        '1820': delay_period,
-
-    '2320': s4_down_01,
-   # '2321': thirdStimulusNshape,
-    '2340': s4_down_02,
-    '2360': s4_down_03,
-    '2380': s4_down_04,
-    '2400': s4_down_05,
-    '2420': s4_down_06,
-    '2440': s4_up_01,
-    '2460': s4_up_02,
-    '2480': s4_up_03,
-    '2500': s4_up_04,
-    '2520': s4_up_05,
-    '2540': s4_up_06,
-   
-	'2560': intertrial_interval,
-        '2570': intertrial_interval,
-        '2600': intertrial_interval
+    '1100': intertrial_interval,
+    '1120': intertrial_interval
 }
 
 
